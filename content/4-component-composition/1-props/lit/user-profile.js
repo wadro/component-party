@@ -1,19 +1,22 @@
 import { LitElement, html } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
 
-@customElement('user-profile')
 export class UserProfile extends LitElement {
-	@property()
-	name = '';
+  constructor() {
+    super();
+    this.name = '';
+    this.age = 0;
+    this.favouriteColors = [];
+    this.isAvailable = false;
+  }
 
-	@property({ type: Number })
-	age = null;
-
-	@property({ type: Array })
-	favouriteColors = [];
-
-	@property({ type: Boolean })
-	isAvailable = false;
+  static get properties() {
+    return {
+      name: {type: String},
+      age: {type: Number},
+      favouriteColors: { type: Array },
+      isAvailable: { type: Boolean }
+    };
+  }
 
 	render() {
 		return html`
@@ -24,3 +27,4 @@ export class UserProfile extends LitElement {
 		`;
 	}
 }
+window.customElements.define('user-profile', UserProfile);
